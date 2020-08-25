@@ -20,7 +20,6 @@
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/Dropbox/todo.org")))
  '(org-export-backends (quote (ascii html icalendar latex md odt confluence)))
  '(package-selected-packages
    (quote
@@ -46,9 +45,12 @@
 ;; org settings
 (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
+(setq org-directory "~/Dropbox/org")
+(setq org-default-notes-file (concat org-directory "/todo.org"))
+(setq org-agenda-files (list(concat org-directory "/todo.org")))
 (global-set-key (kbd "C-c a") 'org-agenda)
-(find-file "~/Dropbox/todo.org")        ;Open todo.org so it's in buffer list
-(org-agenda nil "a")                    ;Open agenda view.
+(find-file (concat org-directory "/todo.org")) ;Open todo.org so it's in buffer list
+(org-agenda nil "a")						   ;Open agenda view.
 
 (global-set-key (kbd "C-?") 'help-command)
 (global-set-key (kbd "M-?") 'mark-paragraph)
