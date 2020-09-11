@@ -23,7 +23,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt confluence)))
  '(package-selected-packages
    (quote
-    (htmlize auctex todoist counsel helm ztree intel-hex-mode org elpy markdown-mode ag magit json-mode go-mode)))
+    (yaml-mode htmlize auctex todoist counsel helm ztree intel-hex-mode org elpy markdown-mode ag magit json-mode go-mode)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -43,14 +43,15 @@
                                         comment-end   "")))
 
 ;; org settings
-(add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "/todo.org"))
 (setq org-agenda-files (list(concat org-directory "/todo.org")))
 (global-set-key (kbd "C-c a") 'org-agenda)
-(find-file (concat org-directory "/todo.org")) ;Open todo.org so it's in buffer list
-(org-agenda nil "a")						   ;Open agenda view.
+(global-set-key (kbd "C-c c") 'org-capture)
+(org-agenda nil "a") ; Open agenda view.
+(setq org-capture-templates
+      '(("t" "Todo" entry (file "~/Dropbox/org/todo.org")
+         "* TODO %?\n  SCHEDULED: <%(org-read-date nil nil)>")))
 
 (global-set-key (kbd "C-?") 'help-command)
 (global-set-key (kbd "M-?") 'mark-paragraph)
