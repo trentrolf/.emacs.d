@@ -12,7 +12,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-enabled-themes (quote (deeper-blue)))
  '(ediff-diff-options "-w")
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
@@ -23,7 +23,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt confluence)))
  '(package-selected-packages
    (quote
-    (yaml-mode htmlize auctex todoist counsel helm ztree intel-hex-mode org elpy markdown-mode ag magit json-mode go-mode)))
+    (ess julia-repl julia-mode yaml-mode htmlize auctex todoist counsel helm ztree intel-hex-mode org elpy markdown-mode ag magit json-mode go-mode)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -74,6 +74,14 @@
  (lambda ()
    (setq pcomplete-cycle-completions nil)))
 
+(setenv "VAULT_USER" "vuemb")
+(setenv "VAULT_PASSWORD" "^3zs1U1Pi&TxJW13nAKTy!kr3M!nF5QOG")
+(setenv "GITHUB_TOKEN" "8e1f4327233ac07796a759009d6854351441a724")
+
+(setenv "PATH" (concat (getenv "PATH") ":/home/trolf/hotdrop/external/firmware_common/tools/vutiliti_packet_tool/_build"))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
+(setenv "PATH" (concat (getenv "PATH") ":/home/trolf/go/bin"))
+
 ; Trying to get gdb remote working.
 ;(setq exec-path (append exec-path '("/usr/local/gcc-arm-none-eabi-7-2018-q2-update/bin")))
 
@@ -101,3 +109,6 @@
 (add-hook 'window-setup-hook 'delete-other-windows)
 
 (setq initial-buffer-choice "~")
+
+;; Save history for minibuffer and eshell
+(savehist-mode 1)
