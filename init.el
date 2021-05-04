@@ -17,13 +17,13 @@
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
+ '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode)))
+    (p4 ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
- '(menu-bar-mode nil)
  '(tooltip-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
