@@ -11,16 +11,15 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-enabled-themes '(deeper-blue))
  '(ediff-diff-options "-w")
- '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   (quote
-    (p4 ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode)))
+   '(p4 ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -90,11 +89,17 @@
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
 
-(setq initial-buffer-choice "~")
-
 ;; Save history for minibuffer and eshell
 (savehist-mode 1)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+
+(require 'p4)
+(setenv "P4CLIENT" "trolf-default")
+(setenv "P4PORT" "ssl:p4p-sea.sonos.com:1666")
+(setenv "P4USER" "trolf")
+(setq p4-executable "/opt/p4-cli/p4")
+
+(setq visible-bell 1)
