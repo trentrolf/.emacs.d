@@ -111,3 +111,5 @@
               (push (prin1-to-string x t) tag-names))
             tags-completion-table)
     (find-tag (ido-completing-read "Tag: " tag-names))))
+
+(global-set-key (kbd "C-'") 'ido-find-tag)
