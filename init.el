@@ -102,4 +102,12 @@
 (setenv "P4USER" "trolf")
 (setq p4-executable "/opt/p4-cli/p4")
 
-(setq visible-bell 1)
+(defun ido-find-tag ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let (tag-names)
+    (mapcar (lambda (x)
+              (push (prin1-to-string x t) tag-names))
+            tags-completion-table)
+    (find-tag (ido-completing-read "Tag: " tag-names))))
