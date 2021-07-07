@@ -11,7 +11,10 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(custom-enabled-themes '(deeper-blue))
+ '(auto-revert-remote-files t)
+ '(custom-enabled-themes '(dracula))
+ '(custom-safe-themes
+   '("549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default))
  '(ediff-diff-options "-w")
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -19,7 +22,7 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(p4 ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
+   '(auto-complete dracula-theme p4 ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -113,3 +116,5 @@
     (find-tag (ido-completing-read "Tag: " tag-names))))
 
 (global-set-key (kbd "C-'") 'ido-find-tag)
+
+(global-auto-complete-mode t)
