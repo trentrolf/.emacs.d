@@ -101,7 +101,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
-(global-set-key (kbd "C-m") 'ido-switch-buffer)
+(global-set-key (kbd "C-,") 'ido-switch-buffer)
 
 (defun ido-find-tag ()
   "Find a tag using ido"
