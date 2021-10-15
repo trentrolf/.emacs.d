@@ -12,17 +12,19 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(auto-revert-remote-files t)
- '(custom-enabled-themes '(dracula))
+ '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
-   '("549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default))
+   (quote
+    ("c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default)))
  '(ediff-diff-options "-w")
- '(ediff-split-window-function 'split-window-horizontally)
- '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(auto-complete dracula-theme p4 ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
+   (quote
+    (auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -48,6 +50,7 @@
 
 (global-set-key (kbd "C-;") 'ag-project)
 (global-set-key (kbd "C-x m") 'magit-status)
+(global-set-key (kbd "C-o") 'other-window)
 
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
@@ -98,12 +101,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
-
-(require 'p4)
-(setenv "P4CLIENT" "trolf-default")
-(setenv "P4PORT" "ssl:p4p-sea.sonos.com:1666")
-(setenv "P4USER" "trolf")
-(setq p4-executable "/opt/p4-cli/p4")
+(global-set-key (kbd "C-m") 'ido-switch-buffer)
 
 (defun ido-find-tag ()
   "Find a tag using ido"
