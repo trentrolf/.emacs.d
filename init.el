@@ -50,7 +50,6 @@
 
 (global-set-key (kbd "C-;") 'ag-project)
 (global-set-key (kbd "C-x m") 'magit-status)
-(global-set-key (kbd "C-o") 'other-window)
 
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
@@ -85,6 +84,7 @@
 (setq c-default-style "stroustrup")
 
 (put 'magit-clean 'disabled nil)
+(setq magit-diff-refine-hunk (quote all))
 
 ;; Removes *scratch* from buffer after the mode has been set.
 (defun remove-scratch-buffer ()
