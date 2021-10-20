@@ -12,19 +12,17 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(auto-revert-remote-files t)
- '(custom-enabled-themes (quote (dracula)))
+ '(custom-enabled-themes '(dracula))
  '(custom-safe-themes
-   (quote
-    ("c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default)))
+   '("c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default))
  '(ediff-diff-options "-w")
- '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   (quote
-    (auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode)))
+   '(clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
