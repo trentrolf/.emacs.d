@@ -22,7 +22,7 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
+   '(bbcode-mode bitbake clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -114,3 +114,5 @@
 (global-set-key (kbd "C-'") 'ido-find-tag)
 
 (global-auto-complete-mode t)
+
+(setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
