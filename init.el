@@ -48,6 +48,7 @@
 
 (global-set-key (kbd "C-;") 'ag-project)
 (global-set-key (kbd "C-x m") 'magit-status)
+(global-set-key (kbd "M-/") 'xref-find-references)
 
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
