@@ -22,9 +22,10 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(bbcode-mode bitbake clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
+   '(meson-mode bbcode-mode bitbake clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
+ '(split-width-threshold 300)
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
 (custom-set-faces
@@ -62,23 +63,10 @@
  (lambda ()
    (setq pcomplete-cycle-completions nil)))
 
-;; (setenv "VAULT_USER" "vuemb")
-;; (setenv "VAULT_PASSWORD" "^3zs1U1Pi&TxJW13nAKTy!kr3M!nF5QOG")
-;; (setenv "GITHUB_TOKEN" "8e1f4327233ac07796a759009d6854351441a724")
-
 ;; (setenv "PATH" (concat (getenv "PATH") ":/home/trolf/hotdrop/external/firmware_common/tools/vutiliti_packet_tool/_build"))
 ;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
 ;; (setenv "PATH" (concat (getenv "PATH") ":/home/trolf/go/bin"))
 
-(defun ansi-term-name (new-name)
-  "Start ansi-term and rename it."
-  (ansi-term "/bin/bash")
-  (rename-buffer new-name t))
-
-(defun segger-debug ()
-  (interactive)
-  (ansi-term-name "rtt")
-  (ansi-term-name "jlink"))
 
 (setq c-default-style "stroustrup")
 
