@@ -14,7 +14,7 @@
  '(auto-revert-remote-files t)
  '(custom-enabled-themes '(dracula))
  '(custom-safe-themes
-   '("c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default))
+   '("1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default))
  '(ediff-diff-options "-w")
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -22,7 +22,7 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(meson-mode bbcode-mode bitbake clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
+   '(vterm meson-mode bbcode-mode bitbake clang-format auto-complete dracula-theme ess julia-repl julia-mode auctex ztree intel-hex-mode markdown-mode ag magit json-mode go-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(split-width-threshold 300)
@@ -73,12 +73,6 @@
 (put 'magit-clean 'disabled nil)
 (setq magit-diff-refine-hunk (quote all))
 
-;; Removes *scratch* from buffer after the mode has been set.
-(defun remove-scratch-buffer ()
-  (if (get-buffer "*scratch*")
-      (kill-buffer "*scratch*")))
-(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
-
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
 
@@ -105,3 +99,11 @@
 (global-auto-complete-mode t)
 
 (setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
+
+;; (add-hook 'term-mode-hook
+;;    (lambda ()
+;;      ;; C-x is the prefix command, rather than C-c
+;;      (term-set-escape-char ?\C-x)))
+
+(use-package vterm
+    :ensure t)
