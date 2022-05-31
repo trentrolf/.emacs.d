@@ -100,10 +100,7 @@
 
 (setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
 
-;; (add-hook 'term-mode-hook
-;;    (lambda ()
-;;      ;; C-x is the prefix command, rather than C-c
-;;      (term-set-escape-char ?\C-x)))
-
-(use-package vterm
-    :ensure t)
+(defun vtn ()
+  "Ask for a name and create a new vterm shell."
+  (interactive)
+  (vterm (read-string "Name for this vterm: ")))
