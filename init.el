@@ -107,3 +107,6 @@
 
 ;; No bell
 (setq ring-bell-function 'ignore)
+
+;; Don't log when auto-reverting buffers
+(setq auto-revert-verbose nil)
