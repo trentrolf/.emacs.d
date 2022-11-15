@@ -12,6 +12,7 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(auto-revert-remote-files t)
+ '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-enabled-themes '(dracula))
  '(custom-safe-themes
    '("1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" "c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "549ccbd11c125a4e671a1e8d3609063a91228e918ffb269e57bd2cd2c0a6f1c6" default))
@@ -47,7 +48,7 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
-(global-set-key (kbd "C-;") 'ag-project)
+(global-set-key (kbd "C-;") 'ag)
 (global-set-key (kbd "C-x m") 'magit-status)
 (global-set-key (kbd "M-/") 'xref-find-references)
 
