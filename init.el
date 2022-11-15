@@ -105,3 +105,9 @@
   "Ask for a name and create a new vterm shell."
   (interactive)
   (vterm (read-string "Name for this vterm: ")))
+
+;; No bell
+(setq ring-bell-function 'ignore)
+
+;; Don't log when auto-reverting buffers
+(setq auto-revert-verbose nil)
