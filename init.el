@@ -20,7 +20,7 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(vterm meson-mode bbcode-mode bitbake clang-format auto-complete auctex intel-hex-mode markdown-mode ag magit json-mode))
+   '(cmake-mode vterm meson-mode bbcode-mode bitbake clang-format auto-complete auctex intel-hex-mode markdown-mode ag magit json-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(split-width-threshold 300)
