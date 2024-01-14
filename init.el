@@ -13,6 +13,8 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(auto-revert-remote-files t)
  '(confirm-kill-emacs 'yes-or-no-p)
+ '(custom-safe-themes
+   '("833ddce3314a4e28411edf3c6efde468f6f2616fc31e17a62587d6a9255f4633" "d89e15a34261019eec9072575d8a924185c27d3da64899905f8548cbd9491a36" "3e200d49451ec4b8baa068c989e7fba2a97646091fd555eca0ee5a1386d56077" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "524fa911b70d6b94d71585c9f0c5966fe85fb3a9ddd635362bfabd1a7981a307" default))
  '(ediff-diff-options "-w")
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -20,7 +22,7 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(cmake-mode vterm meson-mode bbcode-mode bitbake clang-format auto-complete auctex intel-hex-mode markdown-mode ag magit json-mode))
+   '(solarized-theme cmake-mode vterm meson-mode bbcode-mode bitbake clang-format auto-complete auctex intel-hex-mode markdown-mode ag magit json-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(split-width-threshold 300)
@@ -84,3 +86,9 @@
 
 ;; Don't log when auto-reverting buffers
 (setq auto-revert-verbose nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
