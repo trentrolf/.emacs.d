@@ -94,3 +94,5 @@
  )
 
 (load-theme 'solarized-selenized-black t)
+(setq mac-command-modifier 'control) ;; Use ctrl instead of cmd on Mac
+(set-face-attribute 'default nil :height 160) ;; 160 == font size 16
