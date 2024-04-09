@@ -22,7 +22,7 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(yaml-mode solarized-theme cmake-mode vterm meson-mode bbcode-mode bitbake clang-format auto-complete auctex intel-hex-mode markdown-mode ag magit json-mode))
+   '(todoist rust-mode yaml-mode solarized-theme cmake-mode vterm meson-mode bbcode-mode bitbake clang-format auto-complete auctex intel-hex-mode markdown-mode ag magit json-mode))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(split-width-threshold 300)
@@ -95,4 +95,9 @@
 
 (load-theme 'solarized-selenized-black t)
 (setq mac-command-modifier 'control) ;; Use ctrl instead of cmd on Mac
-(set-face-attribute 'default nil :height 160) ;; 160 == font size 16
+(set-face-attribute 'default nil :height 120) ;; 160 == font size 16
+
+(setq todoist-token "b07ee591020a6004c182a5790a0290681c5839f5")
+
+;; Remove tags from the magit-refs because the S2 repo has so many
+(remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
