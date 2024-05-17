@@ -31,6 +31,9 @@
 (setq ring-bell-function 'ignore) ;; No bell
 (setq auto-revert-verbose nil) ;; Don't log when auto-reverting buffers
 (setq mac-command-modifier 'control) ;; Use ctrl instead of cmd on Mac
+;; (setq todoist-token "b07ee591020a6004c182a5790a0290681c5839f5")
+(set-default 'truncate-lines t)
+(setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
 
 (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
                                         comment-end   "")))
@@ -42,6 +45,23 @@
 
 (load-theme 'tango-dark t)
 (set-face-attribute 'default nil :height 120) ;; 160 == font size 16
+
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+(global-set-key (kbd "C-,") 'ido-switch-buffer)
+
+(defun ido-find-tag ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let (tag-names)
+    (mapcar (lambda (x)
+              (push (prin1-to-string x t) tag-names))
+            tags-completion-table)
+    (find-tag (ido-completing-read "Tag: " tag-names))))
+
+(global-set-key (kbd "C-'") 'ido-find-tag)
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
@@ -80,56 +100,3 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; activate installed packages
 (package-initialize)
-
-
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-everywhere t)
-;; (ido-mode 1)
-;; (global-set-key (kbd "C-,") 'ido-switch-buffer)
-
-;; (defun ido-find-tag ()
-;;   "Find a tag using ido"
-;;   (interactive)
-;;   (tags-completion-table)
-;;   (let (tag-names)
-;;     (mapcar (lambda (x)
-;;               (push (prin1-to-string x t) tag-names))
-;;             tags-completion-table)
-;;     (find-tag (ido-completing-read "Tag: " tag-names))))
-
-;; (global-set-key (kbd "C-'") 'ido-find-tag)
-
-;; (setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
-
-
-
-
-
-
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  )
-
-
-
-;; (setq todoist-token "b07ee591020a6004c182a5790a0290681c5839f5")
-
-;; Remove tags from the magit-refs because the S2 repo has so many
-;; (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yaml-mode vterm todoist solarized-theme rust-mode meson-mode markdown-mode magit json-mode intel-hex-mode cmake-mode clang-format bitbake bbcode-mode auto-complete)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
