@@ -9,6 +9,8 @@
 (global-set-key (kbd "C-;") 'ag)
 (global-set-key (kbd "C-x m") 'magit-status)
 (global-set-key (kbd "M-/") 'xref-find-references)
+(global-set-key (kbd "C-x C-g") 'fzf-git-files)
+(global-set-key (kbd "C-x b") 'fzf-switch-buffer)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -44,59 +46,23 @@
 (add-hook 'window-setup-hook 'delete-other-windows)
 
 (load-theme 'tango-dark t)
-(set-face-attribute 'default nil :height 120) ;; 160 == font size 16
-
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-(global-set-key (kbd "C-,") 'ido-switch-buffer)
-
-(defun ido-find-tag ()
-  "Find a tag using ido"
-  (interactive)
-  (tags-completion-table)
-  (let (tag-names)
-    (mapcar (lambda (x)
-              (push (prin1-to-string x t) tag-names))
-            tags-completion-table)
-    (find-tag (ido-completing-read "Tag: " tag-names))))
-
-(global-set-key (kbd "C-'") 'ido-find-tag)
+(set-face-attribute 'default nil :height 140) ;; 160 == font size 16
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
   (interactive)
   (vterm (read-string "Name for this vterm: ")))
 
-(defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
-
-Return a list of installed packages or nil for every skipped package."
-  (mapcar
-   (lambda (package)
-     ;; (package-installed-p 'evil)
-     (if (package-installed-p package)
-         nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         package)))
-   packages))
-
-;; make sure to have downloaded archive description.
-;; Or use package-archive-contents as suggested by Nicolas Dudebout
-(or (file-exists-p package-user-dir)
-    (package-refresh-contents))
-
-(ensure-package-installed
- 'yaml-mode
- 'cmake-mode
- 'vterm
- 'clang-format
- 'markdown-mode
- 'ag
- 'json-mode
- 'magit
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ispell-dictionary nil)
+ '(package-selected-packages '(vterm fzf markdown-mode bitbake json-mode ag magit)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
-
-;; activate installed packages
-(package-initialize)
