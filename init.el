@@ -25,7 +25,8 @@
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 (setq show-paren-mode t)
-(setq split-width-threshold 300)
+(setq split-height-threshold nil   ; never split top/bottom
+      split-width-threshold 0)     ; always split side-by-side
 (setq tab-width 4)
 (setq c-default-style "stroustrup")
 (setq indent-tabs-mode nil)
@@ -46,7 +47,7 @@
 (add-hook 'window-setup-hook 'delete-other-windows)
 
 (load-theme 'tango-dark t)
-(set-face-attribute 'default nil :height 140) ;; 160 == font size 16
+(set-face-attribute 'default nil :height 180) ;; 160 == font size 16
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
