@@ -25,8 +25,20 @@
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 (setq show-paren-mode t)
-(setq split-height-threshold nil   ; never split top/bottom
-      split-width-threshold 0)     ; always split side-by-side
+;; 1) First try to show buffers in *some* existing window (other than the
+;;    one you’re in), then fall back to re-using a window showing the same
+;;    buffer, and *only* if neither of those work do we split.
+(setq display-buffer-alist
+      '((".*"   ;; applies to every buffer
+         . ((display-buffer-use-some-window
+             display-buffer-reuse-window
+             display-buffer-pop-up-window)
+            (inhibit-same-window . t)))))
+
+;; 2) And just to make sure splitting still goes side-by-side, but only
+;;    when you really need a split:
+(setq split-height-threshold nil
+      split-width-threshold 0)
 (setq tab-width 4)
 (setq c-default-style "stroustrup")
 (setq indent-tabs-mode nil)
@@ -34,9 +46,9 @@
 (setq ring-bell-function 'ignore) ;; No bell
 (setq auto-revert-verbose nil) ;; Don't log when auto-reverting buffers
 (setq mac-command-modifier 'control) ;; Use ctrl instead of cmd on Mac
-;; (setq todoist-token "b07ee591020a6004c182a5790a0290681c5839f5")
 (set-default 'truncate-lines t)
 (setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
+(setq magit-diff-refine-hunk 'all) ;; set word-level diff in magit diffs
 
 (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
                                         comment-end   "")))
