@@ -41,7 +41,7 @@
       split-width-threshold 0)
 (setq tab-width 4)
 (setq c-default-style "stroustrup")
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq savehist-mode t) ;; Save history for minibuffer and eshell
 (setq ring-bell-function 'ignore) ;; No bell
 (setq auto-revert-verbose nil) ;; Don't log when auto-reverting buffers
@@ -59,12 +59,15 @@
 (add-hook 'window-setup-hook 'delete-other-windows)
 
 (load-theme 'tango-dark t)
-(set-face-attribute 'default nil :height 180) ;; 160 == font size 16
+(set-face-attribute 'default nil :height 100) ;; 160 == font size 16
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
   (interactive)
   (vterm (read-string "Name for this vterm: ")))
+
+(use-package copilot-chat
+  :ensure t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -72,7 +75,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
- '(package-selected-packages '(vterm fzf markdown-mode bitbake json-mode ag magit)))
+ '(package-selected-packages
+   '(ag bitbake fzf json-mode magit markdown-mode
+        vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
