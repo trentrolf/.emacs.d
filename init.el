@@ -1,5 +1,5 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 (global-set-key (kbd "C-?") 'help-command)
@@ -24,7 +24,7 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
-(setq show-paren-mode t)
+(show-paren-mode 1)
 ;; 1) First try to show buffers in *some* existing window (other than the
 ;;    one you’re in), then fall back to re-using a window showing the same
 ;;    buffer, and *only* if neither of those work do we split.
@@ -42,18 +42,25 @@
 (setq tab-width 4)
 (setq c-default-style "stroustrup")
 (setq-default indent-tabs-mode nil)
-(setq savehist-mode t) ;; Save history for minibuffer and eshell
+(savehist-mode 1) ;; Save history for minibuffer and eshell
 (setq ring-bell-function 'ignore) ;; No bell
 (setq auto-revert-verbose nil) ;; Don't log when auto-reverting buffers
-(setq mac-command-modifier 'control) ;; Use ctrl instead of cmd on Mac
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'control)) ;; Use ctrl instead of cmd on Mac
 (set-default 'truncate-lines t)
-(setq auto-mode-alist (cons '("\\.bb$" . bitbake-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.bb\\'" . bitbake-mode))
 (setq magit-diff-refine-hunk 'all) ;; set word-level diff in magit diffs
 
 (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
                                         comment-end   "")))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Wrap long lines in plain text and Markdown buffers.
+;; markdown-mode derives from text-mode, so this covers both.
+(add-hook 'text-mode-hook 'visual-line-mode)
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)))
 
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
@@ -65,9 +72,6 @@
   "Ask for a name and create a new vterm shell."
   (interactive)
   (vterm (read-string "Name for this vterm: ")))
-
-(use-package copilot-chat
-  :ensure t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
