@@ -13,9 +13,10 @@
 (global-set-key (kbd "C-x b") 'fzf-switch-buffer)
 
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
+(when (display-graphic-p)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1))
 
 (setq auto-revert-remote-files t)
 (setq confirm-kill-emacs 'yes-or-no-p)
@@ -66,7 +67,8 @@
 (add-hook 'window-setup-hook 'delete-other-windows)
 
 (load-theme 'tango-dark t)
-(set-face-attribute 'default nil :height 100) ;; 160 == font size 16
+(when (display-graphic-p)
+  (set-face-attribute 'default nil :height 100))
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
