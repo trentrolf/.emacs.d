@@ -39,7 +39,7 @@
 ;; 2) And just to make sure splitting still goes side-by-side, but only
 ;;    when you really need a split:
 (setq split-height-threshold nil
-      split-width-threshold 0)
+      split-width-threshold 160)
 (setq tab-width 4)
 (setq c-default-style "stroustrup")
 (setq-default indent-tabs-mode nil)
@@ -66,9 +66,12 @@
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
 
-(load-theme 'tango-dark t)
+(load-theme 'modus-vivendi t)
 (when (display-graphic-p)
-  (set-face-attribute 'default nil :height 100))
+  (set-face-attribute 'default nil
+                      :family (if (eq system-type 'darwin) "Monaco" "DejaVu Sans Mono")
+                      :height 140)
+(setq mac-option-modifier 'meta))
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
@@ -80,10 +83,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("3613617b9953c22fe46ef2b593a2e5bc79ef3cc88770602e7e569bbd71de113b" "8c7e832be864674c220f9a9361c851917a93f921fedb7717b1b5ece47690c098" "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1" default))
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(ag bitbake fzf json-mode magit markdown-mode
-        vterm)))
+   '(doom-themes ag bitbake fzf json-mode magit markdown-mode vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
