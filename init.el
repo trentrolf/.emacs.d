@@ -70,13 +70,29 @@
 (when (display-graphic-p)
   (set-face-attribute 'default nil
                       :family (if (eq system-type 'darwin) "Monaco" "DejaVu Sans Mono")
-                      :height 140)
+                      :height 100)
 (setq mac-option-modifier 'meta))
 
 (defun vtn ()
   "Ask for a name and create a new vterm shell."
   (interactive)
   (vterm (read-string "Name for this vterm: ")))
+
+;; Automatically use the right TAGS file based on which repo a file lives in,
+;; instead of running M-x visit-tags-table by hand each session.
+(setq tags-revert-without-query t) ;; Reload TAGS silently after regenerating
+(defvar my-tags-alist
+  '(("~/data/pdsw-sonos-controller-player-s2/" . "~/data/trent-utils/etags/player/TAGS")
+    ("~/data/chirp-c-sdk/"                     . "~/data/trent-utils/etags/chirp-noise/TAGS")
+    ("~/data/chirp-noise/"                     . "~/data/trent-utils/etags/chirp-noise/TAGS")
+    ("~/data/py-sonos-test-core/"              . "~/data/trent-utils/etags/py-sonos-test-core/TAGS"))
+  "Map repo prefix -> TAGS file.")
+(defun my-set-tags-file ()
+  (when buffer-file-name
+    (dolist (entry my-tags-alist)
+      (when (string-prefix-p (expand-file-name (car entry)) buffer-file-name)
+        (setq-local tags-file-name (expand-file-name (cdr entry)))))))
+(add-hook 'find-file-hook #'my-set-tags-file)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -87,7 +103,7 @@
    '("3613617b9953c22fe46ef2b593a2e5bc79ef3cc88770602e7e569bbd71de113b" "8c7e832be864674c220f9a9361c851917a93f921fedb7717b1b5ece47690c098" "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1" default))
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(doom-themes ag bitbake fzf json-mode magit markdown-mode vterm)))
+   '(cmake-mode doom-themes ag bitbake fzf json-mode magit markdown-mode vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
