@@ -16,7 +16,8 @@
 (when (display-graphic-p)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-  (tooltip-mode -1))
+  (tooltip-mode -1)
+  (pixel-scroll-precision-mode 1)) ;; smooth pixel-based scrolling in the GUI
 
 (setq auto-revert-remote-files t)
 (setq confirm-kill-emacs 'yes-or-no-p)
@@ -70,7 +71,7 @@
 (when (display-graphic-p)
   (set-face-attribute 'default nil
                       :family (if (eq system-type 'darwin) "Monaco" "DejaVu Sans Mono")
-                      :height 100)
+                      :height 120)
 (setq mac-option-modifier 'meta))
 
 (defun vtn ()
